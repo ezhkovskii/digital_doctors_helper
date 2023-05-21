@@ -1,0 +1,67 @@
+###########
+# BUILDER #
+###########
+
+# pull official base image
+FROM python:3.11-alpine as python
+
+FROM python as builder
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV POETRY_VERSION=1.4.2
+ENV BUILD_ENVIRONMENT=production
+
+# install psycopg2 dependencies
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev libffi-dev
+
+COPY poetry.lock pyproject.toml ./
+
+RUN pip install --upgrade pip
+RUN pip install "poetry==$POETRY_VERSION"
+
+RUN poetry config virtualenvs.create false \
+  && poetry install --no-dev --no-interaction --no-ansi --no-root \
+  && poetry export -f requirements.txt >> requirements.txt
+
+RUN pip wheel --wheel-dir /usr/src/app/wheels -r requirements.txt
+
+#########
+# FINAL #
+#########
+
+# pull official base image
+FROM python as python-run-stage
+
+RUN addgroup --system django \
+    && adduser --system --ingroup django django
+
+USER django
+
+ENV APP_HOME=/app
+#RUN mkdir ${APP_HOME} && mkdir ${APP_HOME}/staticfiles && mkdir ${APP_HOME}/mediafiles
+COPY . ${APP_HOME}
+WORKDIR ${APP_HOME}
+
+COPY --from=builder /usr/src/app/wheels  /wheels/
+
+USER root
+RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* && rm -rf /wheels/
+
+COPY --chown=django:django ./docker/entrypoint.sh ${APP_HOME}/docker/entrypoint.sh
+RUN sed -i 's/\r$//g' ${APP_HOME}/docker/entrypoint.sh
+RUN chmod +x ${APP_HOME}/docker/entrypoint.sh
+
+COPY --chown=django:django . ${APP_HOME}
+RUN chown -R django:django ${APP_HOME}
+
+USER django
+WORKDIR ${APP_HOME}/src
+
+# run entrypoint.sh
+ENTRYPOINT ["/app/docker/entrypoint.sh"]
+
+
+
