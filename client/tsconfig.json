@@ -10,9 +10,15 @@
       "target": "es5",
       "esModuleInterop": true,
       "allowJs": true,
-      "resolveJsonModule": true
+      "resolveJsonModule": true,
+      "baseUrl": "src",
+      "paths": {
+         "app": ["app/*"],
+         "pages": ["pages/*"],
+         "widgets": ["widgets/*"]
+      }
    },
    "include": [
-      "src/app/index.tsx"
+      "src/index.tsx"
    ]
 }

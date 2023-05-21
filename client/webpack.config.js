@@ -1,9 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-   entry: './src/app/index.tsx',
+   entry: './src/index.tsx',
    target: 'web',
    mode: 'development',
    stats: {
@@ -11,10 +10,15 @@ module.exports = {
    },
    output: {
       path: path.resolve(__dirname, 'build'),
-      publicPath: '/',
+      publicPath: './',
       filename: 'bundle.js'
    },
    resolve: {
+      alias: {
+         app: path.resolve(__dirname, 'src/app'),
+         pages: path.resolve(__dirname, 'src/pages'),
+         widgets: path.resolve(__dirname, 'src/widgets')
+      },
       extensions: ['.ts', '.tsx', '.js'],
       extensionAlias: {
          '.js': ['.js', '.ts'],
@@ -35,7 +39,7 @@ module.exports = {
          },
          {
             test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, 'css-loader']
+            use: ['style-loader', 'css-loader', 'postcss-loader']
          },
          {
             test: /\.tsx?$/,
@@ -51,8 +55,7 @@ module.exports = {
    },
    plugins: [
       new HtmlWebpackPlugin({
-         template: path.resolve(__dirname, 'src', 'App', 'index.html')
-      }),
-      new MiniCssExtractPlugin()
+         template: path.resolve(__dirname, 'src', 'index.html')
+      })
    ]
 };
