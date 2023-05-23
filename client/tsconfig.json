@@ -15,7 +15,8 @@
       "paths": {
          "app": ["app/*"],
          "pages": ["pages/*"],
-         "widgets": ["widgets/*"]
+         "widgets": ["widgets/*"],
+         "shared": ["shared/*"]
       }
    },
    "include": [
