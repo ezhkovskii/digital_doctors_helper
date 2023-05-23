@@ -46,6 +46,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("monitoring/v1/alive/", include("health_check.urls")),
     path("api/", include("common.urls")),
+    path("api/", include("reports.urls")),
+    path("api/", include("medical_entities.urls")),
     re_path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
 ]
 

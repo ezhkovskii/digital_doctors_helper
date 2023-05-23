@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "common.apps.CommonConfig",
+    "reports.apps.ReportsConfig",
+    "medical_entities.apps.MedicalEntitiesConfig",
     "django_cleanup.apps.CleanupConfig",  # django_cleanup should be placed last in INSTALLED_APPS
 ]
 
@@ -177,7 +179,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 SWAGGER_SETTINGS = {"SECURITY_DEFINITIONS": {"DRF Token": {"type": "apiKey", "name": "Authorization", "in": "header"}}}
 
-CSRF_TRUSTED_ORIGINS = os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", default="").split(" ")
+CSRF_TRUSTED_ORIGINS = os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", default="http://* https://*").split(" ")
 
 sentry_sdk.init(
     dsn=os.environ.get("DJANGO_SENTRY_DSN"),

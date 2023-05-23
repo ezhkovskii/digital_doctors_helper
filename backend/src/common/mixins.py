@@ -1,10 +1,8 @@
-from typing import Dict
-
 from rest_framework.generics import GenericAPIView
 
 
 class MultiSerializerViewSetMixin(GenericAPIView):
-    serializer_action_classes: Dict
+    serializer_action_classes: dict
     action: str
 
     def get_serializer_class(self):

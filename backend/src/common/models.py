@@ -8,3 +8,8 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class Sex(models.TextChoices):
+    FEMALE = 'F', 'Female'
+    MALE = 'M', 'Male'
