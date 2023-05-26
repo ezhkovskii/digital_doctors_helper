@@ -1,0 +1,1302 @@
+[
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 1,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.668",
+        "updated_at": "2023-05-27T02:23:07.668",
+        "code": "J00",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 2,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.670",
+        "updated_at": "2023-05-27T02:23:07.670",
+        "code": "J04.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 3,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.671",
+        "updated_at": "2023-05-27T02:23:07.671",
+        "code": "J04.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 4,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.672",
+        "updated_at": "2023-05-27T02:23:07.672",
+        "code": "J06",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 5,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.673",
+        "updated_at": "2023-05-27T02:23:07.674",
+        "code": "J06.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 6,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.675",
+        "updated_at": "2023-05-27T02:23:07.675",
+        "code": "J06.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 7,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.676",
+        "updated_at": "2023-05-27T02:23:07.676",
+        "code": "J10",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 8,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.677",
+        "updated_at": "2023-05-27T02:23:07.678",
+        "code": "J11.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 9,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.679",
+        "updated_at": "2023-05-27T02:23:07.679",
+        "code": "J11.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 10,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.686",
+        "updated_at": "2023-05-27T02:23:07.686",
+        "code": "J01.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 11,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.687",
+        "updated_at": "2023-05-27T02:23:07.687",
+        "code": "J01.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 12,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.688",
+        "updated_at": "2023-05-27T02:23:07.688",
+        "code": "J01.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 13,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.689",
+        "updated_at": "2023-05-27T02:23:07.690",
+        "code": "J01.3",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 14,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.691",
+        "updated_at": "2023-05-27T02:23:07.691",
+        "code": "J01.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 15,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.692",
+        "updated_at": "2023-05-27T02:23:07.692",
+        "code": "J01.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 16,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.693",
+        "updated_at": "2023-05-27T02:23:07.693",
+        "code": "J01.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 17,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.694",
+        "updated_at": "2023-05-27T02:23:07.694",
+        "code": "J32.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 18,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.695",
+        "updated_at": "2023-05-27T02:23:07.695",
+        "code": "J32.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 19,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.696",
+        "updated_at": "2023-05-27T02:23:07.696",
+        "code": "J32.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 20,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.697",
+        "updated_at": "2023-05-27T02:23:07.697",
+        "code": "J32.3",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 21,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.698",
+        "updated_at": "2023-05-27T02:23:07.698",
+        "code": "J32.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 22,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.700",
+        "updated_at": "2023-05-27T02:23:07.700",
+        "code": "J32.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 23,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.701",
+        "updated_at": "2023-05-27T02:23:07.701",
+        "code": "J32.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 24,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.702",
+        "updated_at": "2023-05-27T02:23:07.702",
+        "code": "J33.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 25,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.703",
+        "updated_at": "2023-05-27T02:23:07.703",
+        "code": "J33.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 26,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.704",
+        "updated_at": "2023-05-27T02:23:07.704",
+        "code": "J34.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 27,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.705",
+        "updated_at": "2023-05-27T02:23:07.705",
+        "code": "J33.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 28,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.706",
+        "updated_at": "2023-05-27T02:23:07.706",
+        "code": "J33.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 29,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.717",
+        "updated_at": "2023-05-27T02:23:07.717",
+        "code": "I10",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 30,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.719",
+        "updated_at": "2023-05-27T02:23:07.719",
+        "code": "I11.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 31,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.720",
+        "updated_at": "2023-05-27T02:23:07.720",
+        "code": "I11.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 32,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.722",
+        "updated_at": "2023-05-27T02:23:07.722",
+        "code": "I12.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 33,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.723",
+        "updated_at": "2023-05-27T02:23:07.723",
+        "code": "I12.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 34,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.725",
+        "updated_at": "2023-05-27T02:23:07.725",
+        "code": "I13.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 35,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.726",
+        "updated_at": "2023-05-27T02:23:07.727",
+        "code": "I13.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 36,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.728",
+        "updated_at": "2023-05-27T02:23:07.729",
+        "code": "I13.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 37,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.731",
+        "updated_at": "2023-05-27T02:23:07.731",
+        "code": "I13.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 38,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.732",
+        "updated_at": "2023-05-27T02:23:07.732",
+        "code": "I15.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 39,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.733",
+        "updated_at": "2023-05-27T02:23:07.733",
+        "code": "I15.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 40,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.734",
+        "updated_at": "2023-05-27T02:23:07.734",
+        "code": "I15.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 41,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.735",
+        "updated_at": "2023-05-27T02:23:07.735",
+        "code": "I15.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 42,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.736",
+        "updated_at": "2023-05-27T02:23:07.736",
+        "code": "I15.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 43,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.737",
+        "updated_at": "2023-05-27T02:23:07.737",
+        "code": "I20.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 44,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.738",
+        "updated_at": "2023-05-27T02:23:07.738",
+        "code": "I25.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 45,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.739",
+        "updated_at": "2023-05-27T02:23:07.739",
+        "code": "I25.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 46,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.740",
+        "updated_at": "2023-05-27T02:23:07.740",
+        "code": "I25.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 47,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.741",
+        "updated_at": "2023-05-27T02:23:07.741",
+        "code": "I25.5",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 48,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.742",
+        "updated_at": "2023-05-27T02:23:07.742",
+        "code": "I25.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 49,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.743",
+        "updated_at": "2023-05-27T02:23:07.743",
+        "code": "I25.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 50,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.744",
+        "updated_at": "2023-05-27T02:23:07.744",
+        "code": "I49.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 51,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.745",
+        "updated_at": "2023-05-27T02:23:07.745",
+        "code": "I49.3",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 52,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.747",
+        "updated_at": "2023-05-27T02:23:07.747",
+        "code": "I49.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 53,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.748",
+        "updated_at": "2023-05-27T02:23:07.748",
+        "code": "I48.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 54,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.749",
+        "updated_at": "2023-05-27T02:23:07.749",
+        "code": "I48.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 55,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.750",
+        "updated_at": "2023-05-27T02:23:07.750",
+        "code": "I48.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 56,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.751",
+        "updated_at": "2023-05-27T02:23:07.751",
+        "code": "I48.3",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 57,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.752",
+        "updated_at": "2023-05-27T02:23:07.752",
+        "code": "I48.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 58,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.753",
+        "updated_at": "2023-05-27T02:23:07.753",
+        "code": "I48.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 59,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.754",
+        "updated_at": "2023-05-27T02:23:07.754",
+        "code": "I49.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 60,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.755",
+        "updated_at": "2023-05-27T02:23:07.755",
+        "code": "I50.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 61,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.756",
+        "updated_at": "2023-05-27T02:23:07.756",
+        "code": "I50.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 62,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.757",
+        "updated_at": "2023-05-27T02:23:07.757",
+        "code": "I67.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 63,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.758",
+        "updated_at": "2023-05-27T02:23:07.758",
+        "code": "I67.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 64,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.759",
+        "updated_at": "2023-05-27T02:23:07.759",
+        "code": "I67.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 65,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.760",
+        "updated_at": "2023-05-27T02:23:07.760",
+        "code": "I67.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 66,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.761",
+        "updated_at": "2023-05-27T02:23:07.761",
+        "code": "I69.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 67,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.762",
+        "updated_at": "2023-05-27T02:23:07.762",
+        "code": "J03.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 68,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.763",
+        "updated_at": "2023-05-27T02:23:07.763",
+        "code": "J03.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 69,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.764",
+        "updated_at": "2023-05-27T02:23:07.765",
+        "code": "J03.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 70,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.765",
+        "updated_at": "2023-05-27T02:23:07.765",
+        "code": "G43.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 71,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.767",
+        "updated_at": "2023-05-27T02:23:07.767",
+        "code": "G43.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 72,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.768",
+        "updated_at": "2023-05-27T02:23:07.768",
+        "code": "G20",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 73,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.769",
+        "updated_at": "2023-05-27T02:23:07.769",
+        "code": "G40.3",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 74,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.769",
+        "updated_at": "2023-05-27T02:23:07.770",
+        "code": "G40.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 75,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.770",
+        "updated_at": "2023-05-27T02:23:07.770",
+        "code": "G40.5",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 76,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.771",
+        "updated_at": "2023-05-27T02:23:07.771",
+        "code": "G40.6",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 77,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.772",
+        "updated_at": "2023-05-27T02:23:07.772",
+        "code": "G40.7",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 78,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.773",
+        "updated_at": "2023-05-27T02:23:07.773",
+        "code": "G40.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 79,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.774",
+        "updated_at": "2023-05-27T02:23:07.774",
+        "code": "G40.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 80,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.797",
+        "updated_at": "2023-05-27T02:23:07.797",
+        "code": "Н80.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 81,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.798",
+        "updated_at": "2023-05-27T02:23:07.798",
+        "code": "Н80.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 82,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.799",
+        "updated_at": "2023-05-27T02:23:07.799",
+        "code": "Н80.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 83,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.800",
+        "updated_at": "2023-05-27T02:23:07.800",
+        "code": "Н80.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 84,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.801",
+        "updated_at": "2023-05-27T02:23:07.801",
+        "code": "Н80.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 85,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.802",
+        "updated_at": "2023-05-27T02:23:07.802",
+        "code": "I47.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 86,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.809",
+        "updated_at": "2023-05-27T02:23:07.809",
+        "code": "H65.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 87,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.809",
+        "updated_at": "2023-05-27T02:23:07.810",
+        "code": "H65.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 88,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.810",
+        "updated_at": "2023-05-27T02:23:07.811",
+        "code": "H65.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 89,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.811",
+        "updated_at": "2023-05-27T02:23:07.811",
+        "code": "H65.3",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 90,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.812",
+        "updated_at": "2023-05-27T02:23:07.812",
+        "code": "H65.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 91,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.813",
+        "updated_at": "2023-05-27T02:23:07.813",
+        "code": "H65.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 92,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.814",
+        "updated_at": "2023-05-27T02:23:07.814",
+        "code": "H66.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 93,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.815",
+        "updated_at": "2023-05-27T02:23:07.815",
+        "code": "H66.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 94,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.816",
+        "updated_at": "2023-05-27T02:23:07.816",
+        "code": "H66.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 95,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.817",
+        "updated_at": "2023-05-27T02:23:07.817",
+        "code": "H66.3",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 96,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.818",
+        "updated_at": "2023-05-27T02:23:07.818",
+        "code": "H66.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 97,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.819",
+        "updated_at": "2023-05-27T02:23:07.819",
+        "code": "H66.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 98,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.832",
+        "updated_at": "2023-05-27T02:23:07.832",
+        "code": "G40.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 99,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.833",
+        "updated_at": "2023-05-27T02:23:07.833",
+        "code": "G40.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 100,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.834",
+        "updated_at": "2023-05-27T02:23:07.834",
+        "code": "G40.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 101,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.835",
+        "updated_at": "2023-05-27T02:23:07.835",
+        "code": "G25.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 102,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.845",
+        "updated_at": "2023-05-27T02:23:07.845",
+        "code": "G36",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 103,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.846",
+        "updated_at": "2023-05-27T02:23:07.846",
+        "code": "G36.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 104,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.847",
+        "updated_at": "2023-05-27T02:23:07.847",
+        "code": "G36.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 105,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.848",
+        "updated_at": "2023-05-27T02:23:07.848",
+        "code": "I27.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 106,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.849",
+        "updated_at": "2023-05-27T02:23:07.849",
+        "code": "I27.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 107,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.850",
+        "updated_at": "2023-05-27T02:23:07.850",
+        "code": "I27.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 108,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.906",
+        "updated_at": "2023-05-27T02:23:07.906",
+        "code": "I47.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 109,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.907",
+        "updated_at": "2023-05-27T02:23:07.907",
+        "code": "I45.6",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 110,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.908",
+        "updated_at": "2023-05-27T02:23:07.908",
+        "code": "I11",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 111,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.909",
+        "updated_at": "2023-05-27T02:23:07.909",
+        "code": "I12",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 112,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.910",
+        "updated_at": "2023-05-27T02:23:07.910",
+        "code": "I13",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 113,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.913",
+        "updated_at": "2023-05-27T02:23:07.913",
+        "code": "I15",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 114,
+    "fields": {
+        "created_at": "2023-05-27T02:23:07.964",
+        "updated_at": "2023-05-27T02:23:07.964",
+        "code": "G35",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 115,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.103",
+        "updated_at": "2023-05-27T02:23:08.103",
+        "code": "J15.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 116,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.104",
+        "updated_at": "2023-05-27T02:23:08.104",
+        "code": "J18.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 117,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.105",
+        "updated_at": "2023-05-27T02:23:08.105",
+        "code": "J18.9",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 118,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.106",
+        "updated_at": "2023-05-27T02:23:08.106",
+        "code": "J18.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 119,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.107",
+        "updated_at": "2023-05-27T02:23:08.107",
+        "code": "J16.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 120,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.108",
+        "updated_at": "2023-05-27T02:23:08.108",
+        "code": "J15.7",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 121,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.109",
+        "updated_at": "2023-05-27T02:23:08.109",
+        "code": "J22",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 122,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.124",
+        "updated_at": "2023-05-27T02:23:08.124",
+        "code": "G63.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 123,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.242",
+        "updated_at": "2023-05-27T02:23:08.242",
+        "code": "G24.0",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 124,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.243",
+        "updated_at": "2023-05-27T02:23:08.243",
+        "code": "G24.1",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 125,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.244",
+        "updated_at": "2023-05-27T02:23:08.244",
+        "code": "G24.2",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 126,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.245",
+        "updated_at": "2023-05-27T02:23:08.246",
+        "code": "G24.3",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 127,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.247",
+        "updated_at": "2023-05-27T02:23:08.247",
+        "code": "G24.4",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 128,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.248",
+        "updated_at": "2023-05-27T02:23:08.248",
+        "code": "G24.5",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 129,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.249",
+        "updated_at": "2023-05-27T02:23:08.249",
+        "code": "G24.8",
+        "name": ""
+    }
+},
+{
+    "model": "medical_entities.diagnosis",
+    "pk": 130,
+    "fields": {
+        "created_at": "2023-05-27T02:23:08.250",
+        "updated_at": "2023-05-27T02:23:08.250",
+        "code": "G24.9",
+        "name": ""
+    }
+}
+]

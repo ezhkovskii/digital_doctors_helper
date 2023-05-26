@@ -9,6 +9,13 @@ class Doctor(BaseModel):
     external_id = models.CharField(max_length=10, verbose_name='Внешний идентификатор врача')
     name = models.CharField(max_length=500, verbose_name='ФИО', blank=True)
 
+    def __str__(self):
+        return f"{self.external_id}_{self.name}"
+
+    class Meta:
+        verbose_name = 'Врач'
+        verbose_name_plural = 'Врачи'
+
 
 class Patient(BaseModel):
     """Будем добавлять пациентов при парсинге протоколов, пока необязательно"""
@@ -17,10 +24,17 @@ class Patient(BaseModel):
     birthday = models.DateField(verbose_name='Дата рождения пациента')
     name = models.CharField(max_length=500, verbose_name='ФИО', blank=True)
 
+    def __str__(self):
+        return f"{self.external_id}_{self.name}"
+
+    class Meta:
+        verbose_name = 'Пациент'
+        verbose_name_plural = 'Пациенты'
+
 
 class Diagnosis(BaseModel):
-    code = models.CharField(max_length=5, verbose_name='Код диагноза')
-    name = models.CharField(max_length=500, verbose_name='Название')
+    code = models.CharField(max_length=5, verbose_name='Код диагноза', unique=True)
+    name = models.CharField(max_length=500, verbose_name='Название', blank=True)
 
     def __str__(self):
         return self.code
@@ -32,7 +46,7 @@ class Diagnosis(BaseModel):
 
 class MedicalAppointments(BaseModel):
     name = models.CharField(max_length=500, verbose_name='Название')
-    synonyms = models.JSONField(null=True, verbose_name='Похожие выражения')
+    synonyms = models.JSONField(verbose_name='Похожие выражения', default=list)
     service_code = models.CharField(max_length=20, blank=True, verbose_name='Код услуги')
     required = models.BooleanField(verbose_name='Необходимость')
     diagnoses = models.ManyToManyField(Diagnosis)

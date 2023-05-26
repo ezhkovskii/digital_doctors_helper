@@ -17,6 +17,10 @@ django-cors-headers = "^3.14.0"
 django-filter = "^23.2"
 sentry-sdk = {extras = ["django"], version = "^1.21.1"}
 django-cleanup = "^7.0.0"
+celery = "^5.2.7"
+redis = "^4.5.5"
+flower = "^1.2.0"
+openpyxl = "^3.1.2"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = "^4.0.0"

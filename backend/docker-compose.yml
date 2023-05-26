@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    command: poetry run python manage.py runserver 0.0.0.0:8000
+    command: poetry run python src/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
       - media_volume:/app/mediafiles
@@ -15,6 +15,7 @@ services:
       - ./envs/.env.dev
     depends_on:
         - ddh_db
+        - redis
     networks:
       - ddh_back
 
@@ -28,6 +29,65 @@ services:
       - "5432:5432"
     networks:
       - ddh_back
+
+  redis:
+    image: redis:7-alpine
+    networks:
+      - ddh_back
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: ddh_celery_worker
+    command: docker/start-celeryworker.sh
+    volumes:
+      - .:/app
+      - media_volume:/app/mediafiles
+    env_file:
+      - ./envs/.env.dev
+    depends_on:
+      - redis
+      - ddh_db
+    networks:
+      - ddh_back
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: ddh_celery_beat
+    command: docker/start-celerybeat.sh
+    volumes:
+      - .:/app
+      - media_volume:/app/mediafiles
+    env_file:
+      - ./envs/.env.dev
+    depends_on:
+      - redis
+      - ddh_db
+    networks:
+      - ddh_back
+
+  flower:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: ddh_celery_flower
+    command: docker/start-flower.sh
+    volumes:
+      - .:/app
+      - media_volume:/app/mediafiles
+    env_file:
+      - ./envs/.env.dev
+    ports:
+      - "5557:5555"
+    depends_on:
+      - redis
+      - ddh_db
+    networks:
+      - ddh_back
+
 volumes:
   postgres_data:
   media_volume:

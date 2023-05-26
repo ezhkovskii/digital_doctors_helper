@@ -1,12 +1,22 @@
+import pathlib
+
 from django.contrib.auth.models import User
 from django.db import models
 
 from common.models import BaseModel, Sex
 
 
+def update_filename(instance, filename):
+    """Создает новое название файла и определяет куда он будет загружен"""
+    extension = pathlib.Path(filename).suffix
+    filename_new = f"file_{instance.name}_{instance.created_at}{extension}"
+    path = f"report_files/user_{instance.user.id}/{instance.created_at.date()}/{filename_new}"
+    return path
+
+
 class Report(BaseModel):
     name = models.CharField(max_length=250, verbose_name='Название')
-    file = models.FileField(verbose_name='Файл')
+    file = models.FileField(verbose_name='Файл', upload_to=update_filename)
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 
     def __str__(self):
@@ -18,15 +28,16 @@ class Report(BaseModel):
 
 
 class FileData(models.Model):
-    sex = models.CharField(max_length=1, choices=Sex.choices)
+    sex = models.CharField(max_length=1, choices=Sex.choices, verbose_name="Пол пациента")
     birthday = models.DateField(verbose_name='Дата рождения пациента')
     patient_external_id = models.CharField(max_length=10, verbose_name='Внешний идентификатор пациента')
     diagnosis_code = models.CharField(max_length=5, verbose_name='Код диагноза')
     diagnosis_name = models.CharField(max_length=500, verbose_name='Название диагноза')
     date_service = models.DateField(verbose_name='Дата оказания услуги')
     doctor_position = models.CharField(max_length=500, verbose_name='Должность врача')
-    doctor_external_id = models.CharField(max_length=10, verbose_name='Внешний идентификатор врача')
-    doctor_name = models.CharField(max_length=500, verbose_name='ФИО врача')
+    doctor_external_id = models.CharField(max_length=10, verbose_name='Внешний идентификатор врача', blank=True)
+    doctor_name = models.CharField(max_length=500, verbose_name='ФИО врача', blank=True)
+    service_code = models.CharField(max_length=20, blank=True, verbose_name='Код услуги')
     medical_appointments = models.TextField(verbose_name='Назначения')
     report = models.ForeignKey(Report, verbose_name='Отчет', on_delete=models.CASCADE)
 

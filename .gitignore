@@ -2,6 +2,7 @@
 build
 node_modules
 
+celerybeat-schedule
 
 
 # Django #

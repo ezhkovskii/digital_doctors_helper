@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "health_check",
     "health_check.db",
+    'health_check.contrib.celery_ping',
+    'health_check.contrib.redis',
     "drf_yasg",
     "rest_framework",
     "rest_framework.authtoken",
@@ -168,9 +170,9 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
     ],
-    # "DEFAULT_PERMISSION_CLASSES": [
-    #     "rest_framework.permissions.IsAuthenticated",
-    # ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
 }
 
 # CORS_ALLOWED_ORIGINS = os.environ.get("DJANGO_CORS_ALLOWED_ORIGINS", default="").split(" ")
@@ -207,14 +209,18 @@ LOGGING = {
     "formatters": {"console": {"format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"}},
     "handlers": {
         "console": {
-            "level": "DEBUG",
+            "level": "ERROR",
             "class": "logging.StreamHandler",
             "filters": ["require_debug_true"],
             "formatter": "console",
         }
     },
     "loggers": {
-        "": {"level": "DEBUG", "handlers": ["console"], "propagate": True},
-        "django.db.backends": {"level": "DEBUG", "handlers": ["console"]},
+        "": {"level": "ERROR", "handlers": ["console"], "propagate": True},
+        "django.db.backends": {"level": "ERROR", "handlers": ["console"]},
     },
 }
+
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://127.0.0.1:6379/0")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_BACKEND", "redis://127.0.0.1:6379/0")
+REDIS_URL = CELERY_BROKER_URL
