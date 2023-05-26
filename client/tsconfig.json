@@ -7,7 +7,7 @@
       "preserveConstEnums": true,
       "removeComments": true,
       "sourceMap": true,
-      "target": "es5",
+      "target": "es6",
       "esModuleInterop": true,
       "allowJs": true,
       "resolveJsonModule": true,
@@ -16,6 +16,7 @@
          "app": ["app/*"],
          "pages": ["pages/*"],
          "widgets": ["widgets/*"],
+         "entities": ["entities/*"],
          "shared": ["shared/*"]
       }
    },

@@ -10,7 +10,7 @@ module.exports = {
    },
    output: {
       path: path.resolve(__dirname, 'build'),
-      publicPath: './',
+      publicPath: '/',
       filename: 'bundle.js'
    },
    resolve: {
@@ -18,6 +18,7 @@ module.exports = {
          app: path.resolve(__dirname, 'src/app'),
          pages: path.resolve(__dirname, 'src/pages'),
          widgets: path.resolve(__dirname, 'src/widgets'),
+         entities: path.resolve(__dirname, 'src/entities'),
          shared: path.resolve(__dirname, 'src/shared')
       },
       extensions: ['.ts', '.tsx', '.js'],
