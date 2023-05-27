@@ -12,6 +12,7 @@ interface ILayoutPage {
    title?: string;
    titleLoading?: boolean;
    backButtonPath?: string;
+   rightTemplate?: JSX.Element;
 }
 
 const LayoutPage: FC<ILayoutPage> = (props: ILayoutPage) => {
@@ -41,6 +42,7 @@ const LayoutPage: FC<ILayoutPage> = (props: ILayoutPage) => {
                   collapsed={collapsed}
                   setCollapsed={setCollapsed}
                   colorBgContainer={colorBgContainer}
+                  rightTemplate={props.rightTemplate}
                />
                <Spin
                   style={{ maxHeight: '100%' }}

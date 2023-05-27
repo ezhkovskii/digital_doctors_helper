@@ -1,22 +1,74 @@
-import React, { FC, useEffect, useState } from 'react';
-import Dashboard from 'widgets/dashboard';
+import React, { FC, useEffect, useMemo, useState } from 'react';
+import DepartmentDashboard from 'widgets/dashboard/department';
 import LayoutPage from 'widgets/layout';
 import { getReport } from './api';
-import { useParams } from 'react-router-dom';
-import { IReport } from 'shared/index';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { IDoctor, IReport } from 'shared/index';
+import { Button } from 'antd';
+import { FilterOutlined } from '@ant-design/icons';
+import DoctorsDashboard from 'widgets/dashboard/doctors';
+import ExportButton from 'entities/exportButton';
+import DoctorDashboard from 'widgets/dashboard/doctor';
+import PatientDashboard from 'widgets/dashboard/patient';
+import ReportBreadcrumb, {
+   findDoctorById,
+   REPORT_TABS
+} from 'entities/reportBreadcrumb';
 
 const MENU_SELECTED: string[] = [];
 
 const ReportPage: FC = () => {
    const params = useParams();
+   const [searchParams] = useSearchParams();
    const [loading, setLoading] = useState(true);
    const [report, setReport] = useState({} as IReport);
+   const [filterVisibility, setFilterVisibility] = useState(false);
+
    useEffect(() => {
       getReport(params.reportId).then((report) => {
          setReport(report);
          setLoading(false);
       });
    }, []);
+
+   const currentTab = useMemo(() => {
+      let res = <DepartmentDashboard report={report} />;
+      const tab = searchParams.get('tab');
+      const direction = searchParams.get('direction') as 'cardio';
+      const doctor = Number(searchParams.get('doctor'));
+      switch (tab) {
+         case REPORT_TABS.DOCTORS:
+            res = (
+               <DoctorsDashboard
+                  report={report}
+                  tab={tab}
+                  direction={direction}
+               />
+            );
+            break;
+         case REPORT_TABS.DOCTOR:
+            let doctorRecord: IDoctor = {} as IDoctor;
+            if (report?.doctors) {
+               doctorRecord = findDoctorById(report.doctors, doctor);
+            }
+            res = <DoctorDashboard id={doctor} doctor={doctorRecord} />;
+            break;
+         case REPORT_TABS.PATIENT:
+            res = (
+               <PatientDashboard
+                  report={report}
+                  tab={tab}
+                  direction={direction}
+               />
+            );
+            break;
+         default:
+            setFilterVisibility(false);
+            break;
+      }
+      return res;
+   }, [report, searchParams]);
+
    return (
       <LayoutPage
          currentPage={MENU_SELECTED}
@@ -24,8 +76,19 @@ const ReportPage: FC = () => {
          title={report.name}
          titleLoading={loading}
          backButtonPath={'/'}
+         rightTemplate={<ExportButton />}
       >
-         <Dashboard report={report} />
+         <div>
+            <div className={'tw-pb-3 tw-flex tw-justify-between'}>
+               <ReportBreadcrumb report={report} />
+               {filterVisibility && (
+                  <Button type="text">
+                     <FilterOutlined />
+                  </Button>
+               )}
+            </div>
+            {currentTab}
+         </div>
       </LayoutPage>
    );
 };

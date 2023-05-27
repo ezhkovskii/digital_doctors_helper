@@ -1,2 +1,2 @@
-export * from './api/axios';
+export * from './api';
 export * from './lib/interfaces';

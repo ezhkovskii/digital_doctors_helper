@@ -14,6 +14,7 @@ interface IHeaderOptions {
    title?: string;
    titleLoading?: boolean;
    backButtonPath?: string;
+   rightTemplate: JSX.Element;
 }
 
 const Main: FC<IHeaderOptions> = memo((props: IHeaderOptions) => {
@@ -28,21 +29,24 @@ const Main: FC<IHeaderOptions> = memo((props: IHeaderOptions) => {
 
    return (
       <Header style={{ padding: 0, background: props.colorBgContainer }}>
-         <div className={'tw-flex tw-items-baseline tw-h-full tw-pl-5 tw-mt-4'}>
-            {props.backButtonPath && (
-               <Button type="text" onClick={navBackButton}>
-                  <ArrowLeftOutlined />
-               </Button>
-            )}
-            <div className={'tw-w-full tw-self-start tw-pl-1'}>
-               {props.titleLoading ? (
-                  <div className={'tw-h-full tw-w-1/3 tw-pt-2'}>
-                     <Skeleton paragraph={false} />
-                  </div>
-               ) : (
-                  <Title level={3}>{props.title}</Title>
+         <div className={'tw-flex tw-justify-between'}>
+            <div className={'tw-flex tw-pl-5 tw-items-center'}>
+               {props.backButtonPath && (
+                  <Button type="text" onClick={navBackButton}>
+                     <ArrowLeftOutlined />
+                  </Button>
                )}
+               <div className={'tw-w-full tw-mt-2 tw-pl-1'}>
+                  {props.titleLoading ? (
+                     <div className={'tw-h-full tw-w-1/3 tw-pt-2'}>
+                        <Skeleton paragraph={false} />
+                     </div>
+                  ) : (
+                     <Title level={3}>{props.title}</Title>
+                  )}
+               </div>
             </div>
+            <div className={'tw-pr-5'}>{props.rightTemplate}</div>
          </div>
       </Header>
    );
