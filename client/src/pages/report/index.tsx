@@ -6,10 +6,10 @@ import React, {
    useRef,
    useState
 } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import Button from 'antd/es/button';
 import { default as FilterOutlined } from '@ant-design/icons/lib/icons/FilterOutlined';
-import { IDoctor, IReport } from 'shared/index';
+import { IDoctor, IReport, pageToPdf } from 'shared/index';
 import ExportButton from 'entities/exportButton';
 import DoctorsDashboard from 'widgets/dashboard/doctors';
 import DoctorDashboard from 'widgets/dashboard/doctor';
@@ -19,14 +19,13 @@ import ReportBreadcrumb, {
    findDoctorById,
    REPORT_TABS
 } from 'entities/reportBreadcrumb';
-import jsPDF from 'jspdf';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { getReport } from './api';
 
 const MENU_SELECTED: string[] = [];
 
 const ReportPage: FC = () => {
    const params = useParams();
+   const navigate = useNavigate();
    const [searchParams] = useSearchParams();
    const [loading, setLoading] = useState(true);
    const [report, setReport] = useState({} as IReport);
@@ -40,7 +39,9 @@ const ReportPage: FC = () => {
    }, []);
 
    const currentTab = useMemo(() => {
-      let res = <DepartmentDashboard report={report} />;
+      let res = (
+         <DepartmentDashboard report={report} reportId={params.reportId} />
+      );
       const tab = searchParams.get('tab');
       const position = searchParams.get('position');
       const doctor = Number(searchParams.get('doctor'));
@@ -51,6 +52,7 @@ const ReportPage: FC = () => {
                   report={report}
                   tab={tab}
                   position={position}
+                  reportId={params.reportId}
                />
             );
             break;
@@ -68,19 +70,20 @@ const ReportPage: FC = () => {
       return res;
    }, [report, searchParams]);
 
-   const exportReportToPdf = useCallback((currentPage?: boolean) => {
-      const doc = new jsPDF({
-         format: 'a4',
-         unit: 'px'
-      });
-
-      doc.setFont('Inter-Regular', 'normal');
-      doc.html(renderToStaticMarkup(<FilterOutlined />), {
-         async callback(doc) {
-            await doc.save('document');
+   const exportReportToPdf = useCallback(
+      async (data: { currentPage: boolean; report: IReport }) => {
+         if (data.currentPage) {
+            pageToPdf(pageRef.current, data.report.name);
+         } else {
+            navigate('/reportToPdf', {
+               state: {
+                  report: data.report
+               }
+            });
          }
-      });
-   }, []);
+      },
+      [report]
+   );
 
    const pageRef = useRef();
 
@@ -88,22 +91,32 @@ const ReportPage: FC = () => {
       <LayoutPage
          currentPage={MENU_SELECTED}
          loading={loading}
-         title={report.name}
+         title={report.name || ''}
          titleLoading={loading}
          backButtonPath={'/'}
-         rightTemplate={<ExportButton exportPdf={exportReportToPdf} />}
+         rightTemplate={
+            report.reportId ? (
+               <ExportButton report={report} exportPdf={exportReportToPdf} />
+            ) : (
+               <div></div>
+            )
+         }
       >
-         <div>
-            <div className={'tw-pb-3 tw-flex tw-justify-between'}>
-               <ReportBreadcrumb report={report} />
-               {filterVisibility && (
-                  <Button type="text" ref={pageRef}>
-                     <FilterOutlined />
-                  </Button>
-               )}
+         {report.reportId ? (
+            <div ref={pageRef}>
+               <div className={'tw-pb-3 tw-flex tw-justify-between'}>
+                  <ReportBreadcrumb report={report} />
+                  {filterVisibility && (
+                     <Button type="text">
+                        <FilterOutlined />
+                     </Button>
+                  )}
+               </div>
+               {currentTab}
             </div>
-            {currentTab}
-         </div>
+         ) : (
+            <div>Отчет не найден</div>
+         )}
       </LayoutPage>
    );
 };

@@ -42,11 +42,11 @@ const Main: FC<IContentOptions> = memo((props: IContentOptions) => {
          },
          {
             title: 'Дата',
-            dataIndex: 'date',
-            key: 'date',
+            dataIndex: 'updated_at',
+            key: 'updated_at',
             width: '20%',
             render: (_, record) => {
-               const date = new Date(record.date);
+               const date = new Date(record.updated_at);
                return <div>{date.toLocaleString()}</div>;
             }
          },
@@ -56,12 +56,8 @@ const Main: FC<IContentOptions> = memo((props: IContentOptions) => {
             width: '15%',
             render: (_, record) => (
                <Space size="middle">
-                  <a onClick={openReport.bind(this, record.reportId)}>
-                     Открыть
-                  </a>
-                  <a onClick={removeItem.bind(this, record.reportId)}>
-                     Удалить
-                  </a>
+                  <a onClick={openReport.bind(this, record.id)}>Открыть</a>
+                  <a onClick={removeItem.bind(this, record.id)}>Удалить</a>
                </Space>
             )
          }
@@ -75,18 +71,8 @@ const Main: FC<IContentOptions> = memo((props: IContentOptions) => {
 
    const removeItem = useCallback(
       (reportId: number) => {
-         deleteReport(reportId).then((res) => {
-            if (res) {
-               for (let index = 0; index < reports.length; index++) {
-                  const item = reports[index];
-                  if (item.reportId === reportId) {
-                     const clonedReports = [...reports];
-                     clonedReports.splice(index, 1);
-                     setReports(clonedReports);
-                     break;
-                  }
-               }
-            }
+         deleteReport(reportId).then(() => {
+            getReports().then((data) => setReports(data));
          });
       },
       [reports]

@@ -8,7 +8,11 @@ const DiagnosisPage: FC = () => {
    const [loading, setLoading] = useState(true);
 
    return (
-      <LayoutPage currentPage={MENU_SELECTED} loading={loading}>
+      <LayoutPage
+         currentPage={MENU_SELECTED}
+         loading={loading}
+         title={'Список диагнозов'}
+      >
          <DiagnosisContent loading={loading} setLoading={setLoading} />
       </LayoutPage>
    );

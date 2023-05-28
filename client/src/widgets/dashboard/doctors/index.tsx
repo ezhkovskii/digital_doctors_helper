@@ -1,17 +1,15 @@
 import React, { useCallback, useMemo } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Column from '@ant-design/plots/es/components/column';
 import Pie from '@ant-design/plots/es/components/pie';
 import Table, { ColumnsType } from 'antd/es/table';
 import Progress from 'antd/es/progress';
-import Divider from 'antd/es/divider';
 import Space from 'antd/es/space';
 import { IDoctor } from 'shared/index';
 import { IDashboardOptions } from '../lib/interfaces';
 
 const DoctorsDashboard = (props: IDashboardOptions) => {
    const navigate = useNavigate();
-   const params = useParams();
    const data = useMemo(() => {
       const position = props.position;
       const res: IDoctor[] = [];
@@ -35,11 +33,11 @@ const DoctorsDashboard = (props: IDashboardOptions) => {
       (doctorId: number) => {
          const position = props.position;
          navigate({
-            pathname: `/report/${params.reportId}`,
+            pathname: `/report/${props.reportId}`,
             search: `tab=doctor&position=${position}&doctor=${doctorId}`
          });
       },
-      [props.position]
+      [props.position, props.reportId]
    );
 
    const columns: ColumnsType<IDoctor> = useMemo(
@@ -66,7 +64,7 @@ const DoctorsDashboard = (props: IDashboardOptions) => {
             key: 'action',
             width: '20%',
             render: (_, record) => (
-               <Space size="middle">
+               <Space size="middle" data-html2canvas-ignore="true">
                   <a onClick={openReport.bind(this, record.id)}>
                      Открыть отчет по врачу
                   </a>

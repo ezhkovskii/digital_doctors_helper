@@ -46,30 +46,13 @@ const Main: FC<IModalOptions> = memo((props: IModalOptions) => {
    const handleUpload = useCallback(
       (data: IFormData) => {
          const formData = new FormData();
-         formData.append('files[]', fileList[0]);
+         formData.append('file', fileList[0]);
+         formData.append('name', data.name);
          setUploading(true);
-         uploadReport(formData, data.name)
-            .then(({ result, reportId }) => {
+         uploadReport(formData)
+            .then((id) => {
                setFileList([]);
-               const currentReports = JSON.parse(
-                  localStorage.getItem('reports')
-               );
-               const newReports = [
-                  {
-                     reportId,
-                     name: data.name,
-                     date: new Date()
-                  }
-               ];
-               localStorage.setItem(
-                  'reports',
-                  JSON.stringify(
-                     currentReports
-                        ? [...currentReports, ...newReports]
-                        : newReports
-                  )
-               );
-               navigate(`/report/${reportId}`);
+               navigate(`/report/${id}`);
             })
             .finally(() => {
                setUploading(false);

@@ -6,6 +6,7 @@ import ReferralPage from './referral';
 import LoginPage from './login';
 import { checkAuth } from 'shared/index';
 import DiagnosisPage from './diagnosis';
+import ReportToPdf from './reportToPdf';
 
 const router = createBrowserRouter([
    {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
    {
       path: '/diagnosis',
       element: <DiagnosisPage />,
+      loader: checkAuth
+   },
+   {
+      path: '/reportToPdf',
+      element: <ReportToPdf />,
       loader: checkAuth
    }
 ]);

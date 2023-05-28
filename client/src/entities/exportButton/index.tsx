@@ -2,17 +2,15 @@ import React, { useCallback, useState } from 'react';
 import Button from 'antd/es/button';
 import Popover from 'antd/es/popover';
 import { default as CloudDownloadOutlined } from '@ant-design/icons/lib/icons/CloudDownloadOutlined';
+import { IReport } from 'shared/index';
 
 interface IExportButton {
    exportPdf?: Function;
+   report: IReport;
 }
 
 const ExportButton = (props: IExportButton) => {
    const [openExportDialog, setOpenExportDialog] = useState(false);
-
-   const hide = useCallback(() => {
-      setOpenExportDialog(false);
-   }, []);
 
    const handleOpenChange = useCallback((newOpen: boolean) => {
       setOpenExportDialog(newOpen);
@@ -21,14 +19,39 @@ const ExportButton = (props: IExportButton) => {
    const content = useCallback(() => {
       return (
          <div className={'tw-flex tw-flex-col'}>
-            <a onClick={props.exportPdf.bind(true)}>
+            <a
+               onClick={() =>
+                  props.exportPdf({
+                     currentPage: true,
+                     report: props.report
+                  })
+               }
+            >
                Выгрузить текущую страницу
             </a>
-            <a onClick={props.exportPdf.bind(this)}>Выгрузить весь отчет</a>
-            <a onClick={props.exportPdf.bind(this)}>Скачать оригинал отчета</a>
+            <a
+               onClick={() =>
+                  props.exportPdf({
+                     currentPage: false,
+                     report: props.report
+                  })
+               }
+            >
+               Выгрузить весь отчет
+            </a>
+            <a
+               onClick={() =>
+                  props.exportPdf({
+                     currentPage: true,
+                     report: props.report
+                  })
+               }
+            >
+               Скачать оригинал отчета
+            </a>
          </div>
       );
-   }, []);
+   }, [props.report]);
 
    return (
       <Popover

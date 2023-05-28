@@ -6,28 +6,15 @@ const getReport: (reportId: string) => Promise<IReport> = (
       const reports = JSON.parse(localStorage.getItem('reports'));
       for (let index = 0; index < reports.length; index++) {
          const report = reports[index];
+         let res = {} as IReport;
          if (report.reportId == reportId) {
-            resolve({
+            res = {
                reportId: report.reportId,
                name: report.name,
                positions: {
                   position_1: 'Врач кардиолог',
                   position_2: 'Врач невролог',
                   position_3: 'Врач какой-то'
-               },
-               patientsCount: {
-                  position_1: {
-                     male: 36,
-                     female: 342
-                  },
-                  position_2: {
-                     male: 234,
-                     female: 32
-                  },
-                  position_3: {
-                     male: 123,
-                     female: 32
-                  }
                },
                reportsTypeCount: {
                   all: [
@@ -328,9 +315,10 @@ const getReport: (reportId: string) => Promise<IReport> = (
                      ]
                   }
                ]
-            });
+            };
             break;
          }
+         resolve(res);
       }
    });
 };

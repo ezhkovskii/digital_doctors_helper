@@ -6,11 +6,10 @@ import React, {
    useMemo,
    useState
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Space from 'antd/es/space';
 import Table from 'antd/es/table';
 import { ColumnsType } from 'antd/es/table';
-import { getDiagnosis, IDiagnosis } from './api';
+import { deleteDiagnosis, getDiagnosis, IDiagnosis } from './api';
 
 interface IContentOptions {
    loading: boolean;
@@ -45,7 +44,7 @@ const DiagnosisContent: FC<IContentOptions> = memo((props: IContentOptions) => {
             width: '15%',
             render: (_, record) => (
                <Space size="middle">
-                  <a onClick={removeItem.bind(this, record.code)}>Удалить</a>
+                  <a onClick={removeItem.bind(this, record.id)}>Удалить</a>
                </Space>
             )
          }
@@ -55,7 +54,11 @@ const DiagnosisContent: FC<IContentOptions> = memo((props: IContentOptions) => {
 
    const removeItem = useCallback(
       (id: number) => {
-         //
+         deleteDiagnosis(id).then(() => {
+            getDiagnosis().then((res) => {
+               setDiagnosis(res);
+            });
+         });
       },
       [diagnosis]
    );

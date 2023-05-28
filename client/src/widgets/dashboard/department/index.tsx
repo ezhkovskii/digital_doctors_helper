@@ -1,5 +1,5 @@
 import React, { FC, memo, useCallback, useMemo } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Alert from 'antd/es/alert';
 import Table from 'antd/es/table';
 import Progress from 'antd/es/progress';
@@ -10,16 +10,9 @@ import Bar from '@ant-design/plots/es/components/bar';
 import Pie from '@ant-design/plots/es/components/pie';
 import { IDashboardOptions } from '../lib/interfaces';
 
-const DEPARTMENT_NAME = {
-   CARDIO: 'Кардиология',
-   NEUROLOGY: 'Неврология',
-   OTOLARYNGOLOGY: 'Отоларингология'
-};
-
 const DepartmentDashboard: FC<IDashboardOptions> = memo(
    (props: IDashboardOptions) => {
       const navigate = useNavigate();
-      const params = useParams();
       const data = useMemo(() => {
          const res: { posId: string; position: string; value: number }[] = [];
          const percentByDepartment = props.report?.percentByDepartment;
@@ -62,7 +55,7 @@ const DepartmentDashboard: FC<IDashboardOptions> = memo(
                key: 'action',
                width: '15%',
                render: (_, record) => (
-                  <Space size="middle">
+                  <Space data-html2canvas-ignore="true" size="middle">
                      <a onClick={openReport.bind(this, record.posId)}>
                         Открыть отчет
                      </a>
@@ -76,22 +69,17 @@ const DepartmentDashboard: FC<IDashboardOptions> = memo(
       const openReport = useCallback(
          (position: string) => {
             navigate({
-               pathname: `/report/${params.reportId}`,
+               pathname: `/report/${props.reportId}`,
                search: `tab=doctors&position=${position}`
             });
          },
-         [props.report]
+         [props.report, props.reportId]
       );
 
       return (
          <>
             <Alert
-               className={'tw-mb-6'}
-               showIcon
-               message="В отчете найдены направления, которых нет в стандартах."
-               type="warning"
-            />
-            <Alert
+               data-html2canvas-ignore="true"
                className={'tw-mb-6'}
                showIcon
                message="Если для диагноза, указанного в протоколе осмотра, не разработан стандарт оказания медицинской помощи, то такие протоколы исключаются из анализа."

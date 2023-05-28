@@ -29,15 +29,24 @@ const Main: FC<IHeaderOptions> = memo((props: IHeaderOptions) => {
    }, [props.backButtonPath]);
 
    return (
-      <Header style={{ padding: 0, background: props.colorBgContainer }}>
+      <Header
+         className={'tw-flex'}
+         style={{ padding: 0, background: props.colorBgContainer }}
+      >
          <div className={'tw-flex tw-justify-between'}>
             <div className={'tw-flex tw-pl-5 tw-items-center'}>
                {props.backButtonPath && (
-                  <Button type="text" onClick={navBackButton}>
-                     <ArrowLeftOutlined />
-                  </Button>
+                  <div className={'tw-flex tw-grow tw-flex-col'}>
+                     <Button type="text" onClick={navBackButton}>
+                        <ArrowLeftOutlined />
+                     </Button>
+                  </div>
                )}
-               <div className={'tw-w-full tw-mt-2 tw-pl-1'}>
+               <div
+                  className={`tw-w-full tw-pl-1 ${
+                     props.rightTemplate ? 'tw-mt-2' : 'tw-mt-3'
+                  }`}
+               >
                   {props.titleLoading ? (
                      <div className={'tw-h-full tw-w-1/3 tw-pt-2'}>
                         <Skeleton paragraph={false} />
@@ -54,7 +63,7 @@ const Main: FC<IHeaderOptions> = memo((props: IHeaderOptions) => {
 });
 
 Main.defaultProps = {
-   title: 'Digital Doctors Helper'
+   title: `Digital Doctor's Helper`
 };
 
 export default Main;

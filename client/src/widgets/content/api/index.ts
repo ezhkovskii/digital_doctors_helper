@@ -1,43 +1,31 @@
+import { axiosInst, showError } from 'shared/index';
+
 export interface IReport {
-   reportId: number;
+   id: number;
    name: string;
-   date: string;
+   updated_at: string;
 }
 
-const getReports = (): Promise<IReport[]> => {
-   return new Promise((resolve, reject) => {
-      const reports = localStorage.getItem('reports');
-      let res: IReport[];
-      if (reports) {
-         res = JSON.parse(reports);
-      }
-      resolve(res);
-   });
+const getReports = async (): Promise<IReport[]> => {
+   let res = [];
+   try {
+      const data = await axiosInst.get('/reports');
+      res = data.data;
+   } catch (error) {
+      showError('Не удалось получить список отчетов', error);
+   }
+   return res;
 };
 
-const deleteReport = (reportId: number): Promise<boolean> => {
-   return new Promise((resolve, reject) => {
-      const reports = localStorage.getItem('reports');
-      let result = false;
-      if (reports) {
-         const reportsNormal = JSON.parse(reports);
-         if (reportsNormal.length) {
-            for (let index = 0; index < reportsNormal.length; index++) {
-               const item = reportsNormal[index];
-               if (item.reportId === reportId) {
-                  reportsNormal.splice(index, 1);
-                  localStorage.setItem(
-                     'reports',
-                     JSON.stringify(reportsNormal)
-                  );
-                  result = true;
-                  break;
-               }
-            }
-         }
-      }
-      resolve(result);
-   });
+const deleteReport = async (reportId: number): Promise<boolean> => {
+   let res = false;
+   try {
+      const data = await axiosInst.delete(`/reports/${reportId}`);
+      res = data.data;
+   } catch (error) {
+      showError('Не удалось удалить отчет', error);
+   }
+   return res;
 };
 
 export { getReports, deleteReport };

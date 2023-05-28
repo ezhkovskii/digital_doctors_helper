@@ -1,7 +1,7 @@
 import { axiosInst, showError } from 'shared/index';
-import notification from 'antd/lib/notification';
 
 interface IDiagnosis {
+   id: number;
    name: string;
    code: string;
 }
@@ -17,4 +17,15 @@ const getDiagnosis = async (): Promise<IDiagnosis[]> => {
    return res;
 };
 
-export { getDiagnosis, IDiagnosis };
+const deleteDiagnosis = async (id: number) => {
+   let res = [];
+   try {
+      const rs = await axiosInst.delete(`/diagnosis/${id}`);
+      res = rs.data;
+   } catch (error) {
+      showError('Ошибка при удалении диагноза', error);
+   }
+   return res;
+};
+
+export { deleteDiagnosis, getDiagnosis, IDiagnosis };
