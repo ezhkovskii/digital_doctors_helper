@@ -38,7 +38,7 @@ class ReportViewSet(viewsets.ModelViewSet):
         headers = self.get_success_headers(serializer.data)
 
         # parse_and_analysis_file_data.delay(serializer.instance.file.name, serializer.instance.id)
-        parse_and_analysis_file_data(serializer.instance.file.name, serializer.instance.id)
+        parse_and_analysis_file_data.delay(serializer.instance.file.name, serializer.instance.id)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
