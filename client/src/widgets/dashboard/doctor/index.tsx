@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-import { Gauge } from '@ant-design/plots';
-import { IDoctor, IPatient } from 'shared/index';
+import Gauge from '@ant-design/plots/es/components/gauge';
 import { GaugeConfig } from '@ant-design/plots/es/components/gauge';
-import { Progress, Table } from 'antd';
+import Table from 'antd/es/table';
+import Progress from 'antd/es/progress';
 import { ColumnsType } from 'antd/es/table';
+import { IDoctor, IPatient } from 'shared/index';
 
 interface IDoctorDashboardOptions {
    id: number;

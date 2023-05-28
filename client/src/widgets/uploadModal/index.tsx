@@ -1,11 +1,14 @@
 import React, { FC, memo, useCallback, useState } from 'react';
-import { Modal, Input, Button, Upload, Form } from 'antd';
-import { FormOutlined, InboxOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
+import Modal from 'antd/es/modal';
+import Input from 'antd/es/input';
+import Button from 'antd/es/button';
+import Dragger from 'antd/es/upload/Dragger';
+import Form from 'antd/es/form';
+import { default as FormOutlined } from '@ant-design/icons/lib/icons/FormOutlined';
+import { default as InboxOutlined } from '@ant-design/icons/lib/icons/InboxOutlined';
 import type { UploadFile } from 'antd/es/upload/interface';
 import { uploadReport } from './api';
-import { useNavigate } from 'react-router-dom';
-
-const { Dragger } = Upload;
 
 interface IModalOptions {
    open: boolean;

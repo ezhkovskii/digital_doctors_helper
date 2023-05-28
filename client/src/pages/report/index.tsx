@@ -1,19 +1,19 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
-import DepartmentDashboard from 'widgets/dashboard/department';
-import LayoutPage from 'widgets/layout';
-import { getReport } from './api';
 import { useParams, useSearchParams } from 'react-router-dom';
+import Button from 'antd/es/button';
+import { default as FilterOutlined } from '@ant-design/icons/lib/icons/FilterOutlined';
 import { IDoctor, IReport } from 'shared/index';
-import { Button } from 'antd';
-import { FilterOutlined } from '@ant-design/icons';
-import DoctorsDashboard from 'widgets/dashboard/doctors';
 import ExportButton from 'entities/exportButton';
+import DoctorsDashboard from 'widgets/dashboard/doctors';
 import DoctorDashboard from 'widgets/dashboard/doctor';
 import PatientDashboard from 'widgets/dashboard/patient';
+import DepartmentDashboard from 'widgets/dashboard/department';
+import LayoutPage from 'widgets/layout';
 import ReportBreadcrumb, {
    findDoctorById,
    REPORT_TABS
 } from 'entities/reportBreadcrumb';
+import { getReport } from './api';
 
 const MENU_SELECTED: string[] = [];
 

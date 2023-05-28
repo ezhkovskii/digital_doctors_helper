@@ -6,13 +6,15 @@ import React, {
    useMemo,
    useState
 } from 'react';
-import { Table, Space } from 'antd';
-import EmptyView from 'entities/emptyView';
-import './index.css';
-import { deleteReport, getReports, IReport } from './api';
-import { ColumnsType } from 'antd/es/table';
 import { useNavigate } from 'react-router-dom';
+import Space from 'antd/es/space';
+import Table from 'antd/es/table';
+import { ColumnsType } from 'antd/es/table';
+import EmptyView from 'entities/emptyView';
 import UploadButton from 'entities/uploadButton';
+import { deleteReport, getReports, IReport } from './api';
+
+import './index.css';
 
 interface IContentOptions {
    loading: boolean;

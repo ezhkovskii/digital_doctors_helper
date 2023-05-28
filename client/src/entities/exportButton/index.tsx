@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import { Button, Popover } from 'antd';
-import { FilePdfOutlined } from '@ant-design/icons';
+import Button from 'antd/es/button';
+import Popover from 'antd/es/popover';
+import { default as FilePdfOutlined } from '@ant-design/icons/lib/icons/FilePdfOutlined';
 
 const ExportButton = () => {
    const [openExportDialog, setOpenExportDialog] = useState(false);

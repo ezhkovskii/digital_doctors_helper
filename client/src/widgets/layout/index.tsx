@@ -1,5 +1,8 @@
 import React, { FC, useState } from 'react';
-import { Layout, theme, Spin, ConfigProvider } from 'antd';
+import Layout from 'antd/es/layout';
+import Spin from 'antd/es/spin';
+import theme from 'antd/lib/theme';
+import ConfigProvider from 'antd/lib/config-provider';
 import Menu from 'widgets/menu';
 import Header from 'widgets/header';
 

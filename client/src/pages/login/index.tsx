@@ -1,7 +1,10 @@
 import React, { FC, useCallback } from 'react';
-import { Button, Form, Input } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import Button from 'antd/es/button';
+import Form from 'antd/es/form';
+import Input from 'antd/es/input';
+import { default as UserOutlined } from '@ant-design/icons/lib/icons/UserOutlined';
+import { default as LockOutlined } from '@ant-design/icons/lib/icons/LockOutlined';
 import { login } from './api';
 
 const LoginPage: FC = () => {

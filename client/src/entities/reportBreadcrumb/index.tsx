@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { Breadcrumb } from 'antd';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { IDoctor, IReport } from 'shared/index';
+import Breadcrumb from 'antd/es/breadcrumb';
 
 export const REPORT_TABS = {
    DOCTORS: 'doctors',

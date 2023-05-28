@@ -1,9 +1,10 @@
 import React, { FC, memo, useCallback, useEffect } from 'react';
-import { Layout, Skeleton, Button, Typography } from 'antd';
-import { ArrowLeftOutlined } from '@ant-design/icons';
+import Layout from 'antd/es/layout';
+import Skeleton from 'antd/es/skeleton';
+import Button from 'antd/es/button';
+import { default as Title } from 'antd/es/typography/Title';
+import { default as ArrowLeftOutlined } from '@ant-design/icons/lib/icons/ArrowLeftOutlined';
 import { useNavigate } from 'react-router-dom';
-
-const { Title } = Typography;
 
 const { Header } = Layout;
 

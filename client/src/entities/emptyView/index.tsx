@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { Empty } from 'antd';
+import Empty from 'antd/es/empty';
 import UploadButton from 'entities/uploadButton';
 
 interface IEmptyViewOptions {

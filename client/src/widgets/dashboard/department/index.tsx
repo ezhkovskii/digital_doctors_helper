@@ -1,8 +1,13 @@
 import React, { FC, memo, useCallback, useMemo } from 'react';
-import { Alert, Space, Table, Progress, Divider } from 'antd';
-import { Bar, Pie } from '@ant-design/plots';
 import { useNavigate, useParams } from 'react-router-dom';
+import Alert from 'antd/es/alert';
+import Table from 'antd/es/table';
+import Progress from 'antd/es/progress';
+import Divider from 'antd/es/divider';
+import Space from 'antd/es/space';
 import { ColumnsType } from 'antd/es/table';
+import Bar from '@ant-design/plots/es/components/bar';
+import Pie from '@ant-design/plots/es/components/pie';
 import { IDashboardOptions } from '../lib/interfaces';
 
 const DEPARTMENT_NAME = {

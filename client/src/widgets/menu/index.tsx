@@ -1,6 +1,8 @@
 import React, { FC, memo, useCallback } from 'react';
-import { Layout, Menu } from 'antd';
-import { UserOutlined, OrderedListOutlined } from '@ant-design/icons';
+import Layout from 'antd/es/layout';
+import Menu from 'antd/es/menu';
+import { default as UserOutlined } from '@ant-design/icons/lib/icons/UserOutlined';
+import { default as OrderedListOutlined } from '@ant-design/icons/lib/icons/OrderedListOutlined';
 import { useNavigate } from 'react-router-dom';
 import { MenuInfo } from 'rc-menu/lib/interface';
 

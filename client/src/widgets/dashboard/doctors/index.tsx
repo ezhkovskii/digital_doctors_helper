@@ -1,9 +1,12 @@
 import React, { useCallback, useMemo } from 'react';
-import { Column, Pie } from '@ant-design/plots';
-import { IDoctor } from 'shared/index';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Divider, Progress, Space, Table } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import Column from '@ant-design/plots/es/components/column';
+import Pie from '@ant-design/plots/es/components/pie';
+import Table, { ColumnsType } from 'antd/es/table';
+import Progress from 'antd/es/progress';
+import Divider from 'antd/es/divider';
+import Space from 'antd/es/space';
+import { IDoctor } from 'shared/index';
 import { IDashboardOptions } from '../lib/interfaces';
 
 const DoctorsDashboard = (props: IDashboardOptions) => {

@@ -1,5 +1,5 @@
 import { axiosInst } from 'shared/index';
-import { notification } from 'antd';
+import notification from 'antd/lib/notification';
 
 const login = async (username: string, password: string) => {
    try {

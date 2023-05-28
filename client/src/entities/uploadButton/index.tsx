@@ -1,5 +1,5 @@
 import React, { FC, memo, useState } from 'react';
-import { Button } from 'antd';
+import Button from 'antd/es/button';
 import UploadModal from 'widgets/uploadModal';
 
 interface IUploadButtonOptions {
