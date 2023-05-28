@@ -10,20 +10,21 @@ const getReport: (reportId: string) => Promise<IReport> = (
             resolve({
                reportId: report.reportId,
                name: report.name,
+               positions: {
+                  position_1: 'Врач кардиолог',
+                  position_2: 'Врач невролог',
+                  position_3: 'Врач какой-то'
+               },
                patientsCount: {
-                  all: {
-                     male: 56,
-                     female: 100
-                  },
-                  cardio: {
+                  position_1: {
                      male: 36,
                      female: 342
                   },
-                  neurology: {
+                  position_2: {
                      male: 234,
                      female: 32
                   },
-                  otolaryngology: {
+                  position_3: {
                      male: 123,
                      female: 32
                   }
@@ -43,7 +44,7 @@ const getReport: (reportId: string) => Promise<IReport> = (
                         count: 137
                      }
                   ],
-                  cardio: [
+                  position_1: [
                      {
                         name: 'Обязательные',
                         count: 100
@@ -57,7 +58,7 @@ const getReport: (reportId: string) => Promise<IReport> = (
                         count: 13
                      }
                   ],
-                  neurology: [
+                  position_2: [
                      {
                         name: 'Обязательные',
                         count: 500
@@ -71,7 +72,7 @@ const getReport: (reportId: string) => Promise<IReport> = (
                         count: 250
                      }
                   ],
-                  otolaryngology: [
+                  position_3: [
                      {
                         name: 'Обязательные',
                         count: 1337
@@ -87,16 +88,30 @@ const getReport: (reportId: string) => Promise<IReport> = (
                   ]
                },
                percentByDepartment: {
-                  cardio: 50,
-                  neurology: 100,
-                  otolaryngology: 70
+                  position_1: 50,
+                  position_2: 100,
+                  position_3: 70
                },
                doctors: [
                   {
                      id: 1,
                      name: 'Пупкин Вася Олегович',
-                     direction: 'cardio',
+                     position: 'position_1',
                      percent: 69,
+                     reportsTypeCount: [
+                        {
+                           name: 'Обязательные',
+                           count: 100
+                        },
+                        {
+                           name: 'Не обязательные',
+                           count: 150
+                        },
+                        {
+                           name: 'Дополнительные',
+                           count: 13
+                        }
+                     ],
                      patients: [
                         {
                            id: 2,
@@ -139,7 +154,21 @@ const getReport: (reportId: string) => Promise<IReport> = (
                      id: 2,
                      name: 'Устинов Дмитрий Семёнович',
                      percent: 30,
-                     direction: 'neurology',
+                     position: 'position_2',
+                     reportsTypeCount: [
+                        {
+                           name: 'Обязательные',
+                           count: 100
+                        },
+                        {
+                           name: 'Не обязательные',
+                           count: 150
+                        },
+                        {
+                           name: 'Дополнительные',
+                           count: 13
+                        }
+                     ],
                      patients: [
                         {
                            id: 3,
@@ -154,11 +183,13 @@ const getReport: (reportId: string) => Promise<IReport> = (
                               },
                               {
                                  name: 'Какое-то направление 2',
-                                 isRequired: true
+                                 isRequired: false,
+                                 isAdditional: true
                               },
                               {
                                  name: 'Какое-то направление 3',
-                                 isRequired: true
+                                 isRequired: false,
+                                 isAdditional: true
                               }
                            ],
                            requiredByDiagnosis: [
@@ -182,7 +213,21 @@ const getReport: (reportId: string) => Promise<IReport> = (
                      id: 3,
                      name: 'Морозов Дмитрий Константинович',
                      percent: 10,
-                     direction: 'otolaryngology',
+                     position: 'position_3',
+                     reportsTypeCount: [
+                        {
+                           name: 'Обязательные',
+                           count: 100
+                        },
+                        {
+                           name: 'Не обязательные',
+                           count: 150
+                        },
+                        {
+                           name: 'Дополнительные',
+                           count: 13
+                        }
+                     ],
                      patients: [
                         {
                            id: 4,
@@ -197,11 +242,13 @@ const getReport: (reportId: string) => Promise<IReport> = (
                               },
                               {
                                  name: 'Какое-то направление 2',
-                                 isRequired: true
+                                 isRequired: false,
+                                 isAdditional: true
                               },
                               {
                                  name: 'Какое-то направление 3',
-                                 isRequired: true
+                                 isRequired: false,
+                                 isAdditional: true
                               }
                            ],
                            requiredByDiagnosis: [
@@ -225,7 +272,21 @@ const getReport: (reportId: string) => Promise<IReport> = (
                      id: 4,
                      name: 'Абрамова Яна Мирославовна',
                      percent: 100,
-                     direction: 'cardio',
+                     position: 'position_3',
+                     reportsTypeCount: [
+                        {
+                           name: 'Обязательные',
+                           count: 100
+                        },
+                        {
+                           name: 'Не обязательные',
+                           count: 150
+                        },
+                        {
+                           name: 'Дополнительные',
+                           count: 13
+                        }
+                     ],
                      patients: [
                         {
                            id: 5,
@@ -240,11 +301,13 @@ const getReport: (reportId: string) => Promise<IReport> = (
                               },
                               {
                                  name: 'Какое-то направление 2',
-                                 isRequired: true
+                                 isRequired: false,
+                                 isAdditional: true
                               },
                               {
                                  name: 'Какое-то направление 3',
-                                 isRequired: true
+                                 isRequired: false,
+                                 isAdditional: true
                               }
                            ],
                            requiredByDiagnosis: [

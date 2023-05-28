@@ -13,12 +13,6 @@ interface IReportBreadcrumbOptions {
    report: IReport;
 }
 
-const DIRECTIONS = {
-   cardio: 'Кардиология',
-   neurology: 'Неврология',
-   otolaryngology: 'Отоларингология'
-};
-
 export const findDoctorById = (
    doctors: IDoctor[],
    doctorId: number
@@ -49,7 +43,7 @@ const ReportBreadcrumb = (props: IReportBreadcrumbOptions) => {
          }
       ];
       const tab = searchParams.get('tab');
-      const direction = searchParams.get('direction') as '';
+      const position = searchParams.get('position');
 
       if (
          tab === REPORT_TABS.DOCTORS ||
@@ -60,13 +54,13 @@ const ReportBreadcrumb = (props: IReportBreadcrumbOptions) => {
             title: (
                <a>
                   Отчет по врачам{' '}
-                  {direction ? ` - ${DIRECTIONS[direction]}` : ''}
+                  {position ? ` - ${props.report?.positions?.[position]}` : ''}
                </a>
             ),
             onClick: () => {
                navigation({
                   pathname: `/report/${params.reportId}`,
-                  search: `tab=doctors&direction=${direction}`
+                  search: `tab=doctors&position=${position}`
                });
             }
          });

@@ -5,6 +5,7 @@ import Table from 'antd/es/table';
 import Progress from 'antd/es/progress';
 import { ColumnsType } from 'antd/es/table';
 import { IDoctor, IPatient } from 'shared/index';
+import Pie from '@ant-design/plots/es/components/pie';
 
 interface IDoctorDashboardOptions {
    id: number;
@@ -52,7 +53,7 @@ const DoctorDashboard = (props: IDoctorDashboardOptions) => {
    const columns: ColumnsType<IPatient> = useMemo(
       () => [
          {
-            title: 'ФИО',
+            title: 'ФИО пациента',
             dataIndex: 'name',
             key: 'name'
          },
@@ -76,14 +77,22 @@ const DoctorDashboard = (props: IDoctorDashboardOptions) => {
             render: (_, record) => <Progress percent={record.percent} />
          },
          {
-            title: 'Направления',
+            title: 'Назначения',
             width: '20%',
             render: (_, record) => {
                return (
                   <div>
-                     {record.direction.map(({ name }) => (
-                        <div>{name}</div>
-                     ))}
+                     {record.direction.map(
+                        ({ name, isRequired, isAdditional }) => (
+                           <div
+                              className={`${isRequired ? 'tw-font-bold' : ''} ${
+                                 isAdditional ? 'tw-italic' : ''
+                              }`}
+                           >
+                              {name}
+                           </div>
+                        )
+                     )}
                   </div>
                );
             }
@@ -109,9 +118,29 @@ const DoctorDashboard = (props: IDoctorDashboardOptions) => {
       return props.doctor?.patients || [];
    }, [props.doctor]);
 
+   const pieDirectionData = useMemo(() => {
+      return props.doctor?.reportsTypeCount || [];
+   }, [props.doctor]);
+
    return (
       <div>
-         <Gauge className={'tw-pb-5'} {...config} />
+         <div className={'tw-flex'}>
+            <Gauge className={'tw-pb-5 tw-w-1/2'} {...config} />
+            <Pie
+               className={'tw-w-1/2'}
+               data={pieDirectionData}
+               height={300}
+               angleField={'count'}
+               colorField={'name'}
+               radius={0.9}
+               innerRadius={0.6}
+               statistic={{
+                  title: {
+                     customHtml: () => `<div>Всего</div>`
+                  }
+               }}
+            />
+         </div>
          <Table
             className={'tw-pt-5'}
             rootClassName={'tw-flex tw-flex-col tw-grow'}

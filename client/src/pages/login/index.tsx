@@ -6,12 +6,14 @@ import Input from 'antd/es/input';
 import { default as UserOutlined } from '@ant-design/icons/lib/icons/UserOutlined';
 import { default as LockOutlined } from '@ant-design/icons/lib/icons/LockOutlined';
 import { login } from './api';
+import { recreateAxiosInst } from 'shared/index';
 
 const LoginPage: FC = () => {
    const navigate = useNavigate();
 
    const onFinish = useCallback((values: any) => {
       login(values.username, values.password).then(() => {
+         recreateAxiosInst();
          navigate('/');
       });
    }, []);

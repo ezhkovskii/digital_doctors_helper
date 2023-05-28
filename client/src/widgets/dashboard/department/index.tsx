@@ -16,77 +16,72 @@ const DEPARTMENT_NAME = {
    OTOLARYNGOLOGY: 'Отоларингология'
 };
 
-const DEPARTMENT_ID = {
-   [DEPARTMENT_NAME.CARDIO]: 'cardio',
-   [DEPARTMENT_NAME.NEUROLOGY]: 'neurology',
-   [DEPARTMENT_NAME.OTOLARYNGOLOGY]: 'otolaryngology'
-};
-
 const DepartmentDashboard: FC<IDashboardOptions> = memo(
    (props: IDashboardOptions) => {
       const navigate = useNavigate();
       const params = useParams();
       const data = useMemo(() => {
+         const res: { posId: string; position: string; value: number }[] = [];
          const percentByDepartment = props.report?.percentByDepartment;
-         return percentByDepartment
-            ? [
-                 {
-                    department: DEPARTMENT_NAME.CARDIO,
-                    value: percentByDepartment.cardio
-                 },
-                 {
-                    department: DEPARTMENT_NAME.NEUROLOGY,
-                    value: percentByDepartment.neurology
-                 },
-                 {
-                    department: DEPARTMENT_NAME.OTOLARYNGOLOGY,
-                    value: percentByDepartment.otolaryngology
-                 }
-              ]
-            : [];
+         if (percentByDepartment) {
+            Object.keys(percentByDepartment).forEach((key) => {
+               res.push({
+                  posId: key,
+                  position: props.report.positions[key],
+                  value: percentByDepartment[key]
+               });
+            });
+         }
+         return res;
       }, [props.report]);
 
       const pieData = useMemo(() => {
          return props.report?.reportsTypeCount?.all || [];
       }, [props.report]);
 
-      const columns: ColumnsType<{ department: string; value: number }> =
-         useMemo(
-            () => [
-               {
-                  title: 'Подразделение',
-                  dataIndex: 'department',
-                  key: 'department'
-               },
-               {
-                  title: 'Процент корректности',
-                  dataIndex: 'value',
-                  key: 'value',
-                  width: '30%',
-                  render: (_, record) => <Progress percent={record.value} />
-               },
-               {
-                  title: 'Действия',
-                  key: 'action',
-                  width: '15%',
-                  render: (_, record) => (
-                     <Space size="middle">
-                        <a onClick={openReport.bind(this, record.department)}>
-                           Открыть отчет
-                        </a>
-                     </Space>
-                  )
-               }
-            ],
-            [props.report]
-         );
+      const columns: ColumnsType<{
+         posId: string;
+         position: string;
+         value: number;
+      }> = useMemo(
+         () => [
+            {
+               title: 'Должности',
+               dataIndex: 'position',
+               key: 'position'
+            },
+            {
+               title: 'Процент корректности',
+               dataIndex: 'value',
+               key: 'value',
+               width: '30%',
+               render: (_, record) => <Progress percent={record.value} />
+            },
+            {
+               title: 'Действия',
+               key: 'action',
+               width: '15%',
+               render: (_, record) => (
+                  <Space size="middle">
+                     <a onClick={openReport.bind(this, record.posId)}>
+                        Открыть отчет
+                     </a>
+                  </Space>
+               )
+            }
+         ],
+         [props.report]
+      );
 
-      const openReport = useCallback((department: string) => {
-         navigate({
-            pathname: `/report/${params.reportId}`,
-            search: `tab=doctors&direction=${DEPARTMENT_ID[department]}`
-         });
-      }, []);
+      const openReport = useCallback(
+         (position: string) => {
+            navigate({
+               pathname: `/report/${params.reportId}`,
+               search: `tab=doctors&position=${position}`
+            });
+         },
+         [props.report]
+      );
 
       return (
          <>
@@ -96,14 +91,20 @@ const DepartmentDashboard: FC<IDashboardOptions> = memo(
                message="В отчете найдены направления, которых нет в стандартах."
                type="warning"
             />
+            <Alert
+               className={'tw-mb-6'}
+               showIcon
+               message="Если для диагноза, указанного в протоколе осмотра, не разработан стандарт оказания медицинской помощи, то такие протоколы исключаются из анализа."
+               type="warning"
+            />
             <div className={'tw-flex tw-grow'}>
                <Bar
                   className={'tw-pb-5 tw-w-2/3'}
                   height={300}
                   data={data}
                   xField={'value'}
-                  yField={'department'}
-                  seriesField={'department'}
+                  yField={'position'}
+                  seriesField={'position'}
                />
                <Divider style={{ height: '300px' }} type="vertical" />
                <Pie

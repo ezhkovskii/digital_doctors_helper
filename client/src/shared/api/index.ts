@@ -3,12 +3,22 @@ import { redirect } from 'react-router-dom';
 
 const baseURL = 'http://37.18.110.142:8000/api/v1';
 
-const axiosInst = axios.create({
-   headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-   },
-   baseURL
-});
+const createAxiosInst = () => {
+   return axios.create({
+      headers: {
+         Authorization: localStorage.getItem('token')
+            ? `token ${localStorage.getItem('token')}`
+            : ''
+      },
+      baseURL
+   });
+};
+
+let axiosInst = createAxiosInst();
+
+const recreateAxiosInst = () => {
+   axiosInst = createAxiosInst();
+};
 
 const checkAuth = async (): Promise<Response | null> => {
    try {
@@ -18,4 +28,4 @@ const checkAuth = async (): Promise<Response | null> => {
    } catch (error) {}
 };
 
-export { axiosInst, checkAuth };
+export { axiosInst, checkAuth, recreateAxiosInst };

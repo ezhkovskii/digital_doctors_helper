@@ -6,61 +6,38 @@ import React, {
    useMemo,
    useState
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Space from 'antd/es/space';
 import Table from 'antd/es/table';
 import { ColumnsType } from 'antd/es/table';
-import { getReferral, IReferral } from './api';
+import { getDiagnosis, IDiagnosis } from './api';
 
 interface IContentOptions {
    loading: boolean;
    setLoading: Function;
 }
 
-const ReferralList: FC<IContentOptions> = memo((props: IContentOptions) => {
+const DiagnosisContent: FC<IContentOptions> = memo((props: IContentOptions) => {
    const [diagnosis, setDiagnosis] = useState([]);
 
    useEffect(() => {
-      getReferral().then((res) => {
+      getDiagnosis().then((res) => {
          props.setLoading(false);
          setDiagnosis(res);
       });
    }, []);
 
-   const columns: ColumnsType<IReferral> = useMemo(
+   const columns: ColumnsType<IDiagnosis> = useMemo(
       () => [
          {
-            title: 'Название',
+            title: 'Код',
+            dataIndex: 'code',
+            key: 'code'
+         },
+         {
+            title: 'Диагноз',
             dataIndex: 'name',
             key: 'name'
-         },
-         {
-            title: 'Синонимы',
-            render: (_, record) => {
-               return (
-                  <div>
-                     {record.synonyms.map((name) => (
-                        <div>{name}</div>
-                     ))}
-                  </div>
-               );
-            }
-         },
-         {
-            title: 'Код услуги',
-            dataIndex: 'service_code',
-            key: 'service_code'
-         },
-         {
-            title: 'Диагнозы',
-            render: (_, record) => {
-               return (
-                  <div>
-                     {record.diagnoses.map((name) => (
-                        <div>{name}</div>
-                     ))}
-                  </div>
-               );
-            }
          },
          {
             title: 'Действия',
@@ -105,4 +82,4 @@ const ReferralList: FC<IContentOptions> = memo((props: IContentOptions) => {
    );
 });
 
-export default ReferralList;
+export default DiagnosisContent;

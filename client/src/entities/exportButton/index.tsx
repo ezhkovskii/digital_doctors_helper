@@ -1,9 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import Button from 'antd/es/button';
 import Popover from 'antd/es/popover';
-import { default as FilePdfOutlined } from '@ant-design/icons/lib/icons/FilePdfOutlined';
+import { default as CloudDownloadOutlined } from '@ant-design/icons/lib/icons/CloudDownloadOutlined';
 
-const ExportButton = () => {
+interface IExportButton {
+   exportPdf?: Function;
+}
+
+const ExportButton = (props: IExportButton) => {
    const [openExportDialog, setOpenExportDialog] = useState(false);
 
    const hide = useCallback(() => {
@@ -17,8 +21,11 @@ const ExportButton = () => {
    const content = useCallback(() => {
       return (
          <div className={'tw-flex tw-flex-col'}>
-            <a onClick={hide}>Выгрузить текущую страницу</a>
-            <a onClick={hide}>Выгрузить весь отчет</a>
+            <a onClick={props.exportPdf.bind(true)}>
+               Выгрузить текущую страницу
+            </a>
+            <a onClick={props.exportPdf.bind(this)}>Выгрузить весь отчет</a>
+            <a onClick={props.exportPdf.bind(this)}>Скачать оригинал отчета</a>
          </div>
       );
    }, []);
@@ -32,7 +39,10 @@ const ExportButton = () => {
          onOpenChange={handleOpenChange}
       >
          <Button type="text">
-            <FilePdfOutlined className={'tw-text-lg'} />
+            <div className={'tw-flex'}>
+               <div className={'tw-pr-2'}>Выгрузить отчет</div>
+               <CloudDownloadOutlined className={'tw-text-lg'} />
+            </div>
          </Button>
       </Popover>
    );

@@ -3,6 +3,7 @@ import Layout from 'antd/es/layout';
 import Menu from 'antd/es/menu';
 import { default as UserOutlined } from '@ant-design/icons/lib/icons/UserOutlined';
 import { default as OrderedListOutlined } from '@ant-design/icons/lib/icons/OrderedListOutlined';
+import { default as FileTextOutlined } from '@ant-design/icons/lib/icons/FileTextOutlined';
 import { useNavigate } from 'react-router-dom';
 import { MenuInfo } from 'rc-menu/lib/interface';
 
@@ -10,12 +11,14 @@ const { Sider } = Layout;
 
 const MENU_KEYS = {
    MAIN: 'main',
-   REFERRAL: 'referral'
+   REFERRAL: 'referral',
+   DIAGNOSIS: 'diagnosis'
 };
 
 const MENU_PATHS = {
    [MENU_KEYS.MAIN]: '/',
-   [MENU_KEYS.REFERRAL]: '/referral'
+   [MENU_KEYS.REFERRAL]: '/referral',
+   [MENU_KEYS.DIAGNOSIS]: '/diagnosis'
 };
 
 interface IMainOptions {
@@ -59,6 +62,11 @@ const Main: FC<IMainOptions> = memo((props: IMainOptions) => {
                   key: MENU_KEYS.REFERRAL,
                   icon: <OrderedListOutlined />,
                   label: 'Список назначений'
+               },
+               {
+                  key: MENU_KEYS.DIAGNOSIS,
+                  icon: <FileTextOutlined />,
+                  label: 'Диагнозы'
                }
             ]}
          />

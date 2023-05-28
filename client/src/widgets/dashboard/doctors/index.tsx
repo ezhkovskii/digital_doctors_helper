@@ -13,58 +13,39 @@ const DoctorsDashboard = (props: IDashboardOptions) => {
    const navigate = useNavigate();
    const params = useParams();
    const data = useMemo(() => {
-      const direction = props.direction;
+      const position = props.position;
       const res: IDoctor[] = [];
       if (props.report?.doctors) {
          const doctors = props.report.doctors;
          doctors.forEach((item) => {
-            if (item.direction === direction) {
+            if (item.position === position) {
                res.push(item);
             }
          });
       }
       return res;
-   }, [props.report, props.direction]);
+   }, [props.report, props.position]);
 
    const pieDirectionData = useMemo(() => {
-      const direction = props.direction;
-      return props.report?.reportsTypeCount?.[direction] || [];
-   }, [props.report, props.direction]);
-
-   const pieSexData = useMemo(() => {
-      const direction = props.direction;
-      const sex = props.report?.patientsCount?.[direction];
-      let data: { name: string; count: number }[] = [];
-      if (sex) {
-         data = [
-            {
-               name: 'Мужчины',
-               count: sex.male
-            },
-            {
-               name: 'Женщины',
-               count: sex.female
-            }
-         ];
-      }
-      return data;
-   }, [props.report, props.direction]);
+      const position = props.position;
+      return props.report?.reportsTypeCount?.[position] || [];
+   }, [props.report, props.position]);
 
    const openReport = useCallback(
       (doctorId: number) => {
-         const direction = props.direction;
+         const position = props.position;
          navigate({
             pathname: `/report/${params.reportId}`,
-            search: `tab=doctor&direction=${direction}&doctor=${doctorId}`
+            search: `tab=doctor&position=${position}&doctor=${doctorId}`
          });
       },
-      [props.direction]
+      [props.position]
    );
 
    const columns: ColumnsType<IDoctor> = useMemo(
       () => [
          {
-            title: 'ФИО',
+            title: 'ФИО врача',
             dataIndex: 'name',
             key: 'name'
          },
@@ -103,7 +84,7 @@ const DoctorsDashboard = (props: IDashboardOptions) => {
             data={data}
             xField={'name'}
             yField={'percent'}
-            seriesField={''}
+            seriesField={'name'}
             xAxis={{
                label: {
                   autoHide: true,
@@ -113,23 +94,8 @@ const DoctorsDashboard = (props: IDashboardOptions) => {
          />
          <div className={'tw-flex tw-pt-5'}>
             <Pie
-               className={'tw-w-1/2'}
+               className={'tw-w-full'}
                data={pieDirectionData}
-               height={300}
-               angleField={'count'}
-               colorField={'name'}
-               radius={0.9}
-               innerRadius={0.6}
-               statistic={{
-                  title: {
-                     customHtml: () => `<div>Всего</div>`
-                  }
-               }}
-            />
-            <Divider style={{ height: '300px' }} type="vertical" />
-            <Pie
-               className={'tw-w-1/2'}
-               data={pieSexData}
                height={300}
                angleField={'count'}
                colorField={'name'}

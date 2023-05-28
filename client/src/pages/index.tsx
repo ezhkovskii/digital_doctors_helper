@@ -5,6 +5,7 @@ import ReportPage from './report';
 import ReferralPage from './referral';
 import LoginPage from './login';
 import { checkAuth } from 'shared/index';
+import DiagnosisPage from './diagnosis';
 
 const router = createBrowserRouter([
    {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
    {
       path: '/referral',
       element: <ReferralPage />,
+      loader: checkAuth
+   },
+   {
+      path: '/diagnosis',
+      element: <DiagnosisPage />,
       loader: checkAuth
    }
 ]);
