@@ -1,13 +1,18 @@
 import django_filters
 from django_filters import rest_framework as filters
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, status
+from rest_framework.generics import GenericAPIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 
-from reports.file_data_parser import FileDataParser
-from reports.models import Report
+from reports.full_report import get_full_report
+from reports.models import Report, Analysis
 from reports.serializers import ReportSerializer
-from reports.tasks import parse_file_data, data_analysis
+from reports.tasks import parse_and_analysis_file_data
+
+full = openapi.Parameter('full', openapi.IN_QUERY, description="Полный отчет", type=openapi.TYPE_BOOLEAN)
 
 
 class ReportFilter(django_filters.FilterSet):
@@ -32,7 +37,17 @@ class ReportViewSet(viewsets.ModelViewSet):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
 
-        parse_file_data.delay(serializer.instance.file.name, serializer.instance.id)
-        data_analysis.delay(serializer.instance.id)
+        # parse_and_analysis_file_data.delay(serializer.instance.file.name, serializer.instance.id)
+        parse_and_analysis_file_data(serializer.instance.file.name, serializer.instance.id)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    @swagger_auto_schema(manual_parameters=[full])
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if request.query_params.get('full'):
+            data = get_full_report(instance)
+            return Response(data)
+
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)

@@ -20,3 +20,10 @@
 ## Загрузка фикстур
      python manage.py loaddata medical_entities/fixtures/ma.json
      python manage.py loaddata medical_entities/fixtures/diagnoses.json
+
+## Выгрузка фикстур 
+    python manage.py dumpdata --indent 4 medical_entities.Diagnosis > medical_entities/fixtures/diagnoses.json
+    python manage.py dumpdata --indent 4 medical_entities.MedicalAppointments > medical_entities/fixtures/ma.json
+
+## Загрузка назначений из файла medical.xlsx
+     python manage.py load_medical_entities

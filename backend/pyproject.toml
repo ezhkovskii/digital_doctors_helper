@@ -21,6 +21,8 @@ celery = "^5.2.7"
 redis = "^4.5.5"
 flower = "^1.2.0"
 openpyxl = "^3.1.2"
+thefuzz = "^0.19.0"
+python-levenshtein = "^0.21.0"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = "^4.0.0"

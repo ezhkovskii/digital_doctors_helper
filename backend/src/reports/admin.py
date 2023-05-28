@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from reports.models import Report, FileData
+from reports.models import Report, FileData, Analysis
 
 
 @admin.register(Report)
@@ -9,5 +9,10 @@ class ReportAdmin(admin.ModelAdmin):
 
 
 @admin.register(FileData)
-class FileData(admin.ModelAdmin):
+class FileDataAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Analysis)
+class AnalysisAdmin(admin.ModelAdmin):
     pass

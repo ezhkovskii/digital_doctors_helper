@@ -26,10 +26,9 @@ FILE_DATA_NAMES = {
 
 class FileDataParser:
 
-    def __init__(self, file_path: str, report_id: int):
+    def __init__(self, file_path: str, report: Report):
         self.file_path = file_path
-        self.report_id = report_id
-        self.report = Report.objects.get(pk=report_id)
+        self.report = report
 
     def is_fill_row(self, row: tuple) -> bool:
         return any(row)

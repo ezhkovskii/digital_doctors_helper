@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 from common.models import BaseModel, Sex
+from medical_entities.models import MedicalAppointments
 
 
 def update_filename(instance, filename):
@@ -35,9 +36,8 @@ class FileData(models.Model):
     diagnosis_name = models.CharField(max_length=500, verbose_name='Название диагноза')
     date_service = models.DateField(verbose_name='Дата оказания услуги')
     doctor_position = models.CharField(max_length=500, verbose_name='Должность врача')
-    doctor_external_id = models.CharField(max_length=10, verbose_name='Внешний идентификатор врача', blank=True)
+    doctor_external_id = models.CharField(max_length=10, verbose_name='Внешний идентификатор врача')
     doctor_name = models.CharField(max_length=500, verbose_name='ФИО врача', blank=True)
-    service_code = models.CharField(max_length=20, blank=True, verbose_name='Код услуги')
     medical_appointments = models.TextField(verbose_name='Назначения')
     report = models.ForeignKey(Report, verbose_name='Отчет', on_delete=models.CASCADE)
 
@@ -47,3 +47,23 @@ class FileData(models.Model):
     class Meta:
         verbose_name = 'Данные файла'
         verbose_name_plural = 'Данные файлов'
+
+
+class Analysis(models.Model):
+    report = models.ForeignKey(Report, verbose_name='Отчет', on_delete=models.CASCADE)
+    file_data = models.ForeignKey(FileData, verbose_name='Данные файла', on_delete=models.CASCADE)
+    data = models.JSONField(verbose_name='Данные анализа', default=dict)
+    # appointment_file_name = models.CharField(max_length=500, verbose_name='Назначение', blank=True)
+    # appointment_std_id = models.ForeignKey(MedicalAppointments, verbose_name="Стандартное назначение", on_delete=models.PROTECT, null=True)
+    # appointment_file_in_std = models.BooleanField(verbose_name='Назначение в стандарте')
+    # count_item_in_std_and_required = models.PositiveIntegerField(verbose_name="Количество назначений стандартных обязательных")
+    # count_item_in_std_and_not_required = models.PositiveIntegerField(verbose_name="Количество назначений стандартных необязательных")
+    # count_item_not_in_std = models.PositiveIntegerField(verbose_name="Количество назначений нестандартных")
+    # correct_percent = models.PositiveSmallIntegerField(verbose_name="Процент корректности")
+
+    def __str__(self):
+        return f"{self.report.name} {self.file_data.diagnosis_code}_{self.file_data.date_service}"
+
+    class Meta:
+        verbose_name = 'Данные анализа'
+        verbose_name_plural = 'Данные анализа'

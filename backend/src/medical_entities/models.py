@@ -49,7 +49,7 @@ class MedicalAppointments(BaseModel):
     synonyms = models.JSONField(verbose_name='Похожие выражения', default=list)
     service_code = models.CharField(max_length=20, blank=True, verbose_name='Код услуги')
     required = models.BooleanField(verbose_name='Необходимость')
-    diagnoses = models.ManyToManyField(Diagnosis)
+    diagnoses = models.ManyToManyField(Diagnosis, related_name="medical_appointments")
 
     def __str__(self):
         return self.name
