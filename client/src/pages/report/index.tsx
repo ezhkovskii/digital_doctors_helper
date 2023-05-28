@@ -28,11 +28,11 @@ const ReportPage: FC = () => {
    const navigate = useNavigate();
    const [searchParams] = useSearchParams();
    const [loading, setLoading] = useState(true);
-   const [report, setReport] = useState({} as IReport);
+   const [report, setReport] = useState(null);
    const [filterVisibility, setFilterVisibility] = useState(false);
 
    useEffect(() => {
-      getReport(params.reportId).then((report) => {
+      getReport(params?.reportId).then((report) => {
          setReport(report);
          setLoading(false);
       });
@@ -91,31 +91,37 @@ const ReportPage: FC = () => {
       <LayoutPage
          currentPage={MENU_SELECTED}
          loading={loading}
-         title={report.name || ''}
+         title={report?.name || ''}
          titleLoading={loading}
          backButtonPath={'/'}
          rightTemplate={
-            report.reportId ? (
+            report?.reportId ? (
                <ExportButton report={report} exportPdf={exportReportToPdf} />
             ) : (
                <div></div>
             )
          }
       >
-         {report.reportId ? (
-            <div ref={pageRef}>
-               <div className={'tw-pb-3 tw-flex tw-justify-between'}>
-                  <ReportBreadcrumb report={report} />
-                  {filterVisibility && (
-                     <Button type="text">
-                        <FilterOutlined />
-                     </Button>
-                  )}
-               </div>
-               {currentTab}
+         {report ? (
+            <div>
+               {report.reportId ? (
+                  <div ref={pageRef}>
+                     <div className={'tw-pb-3 tw-flex tw-justify-between'}>
+                        <ReportBreadcrumb report={report} />
+                        {filterVisibility && (
+                           <Button type="text">
+                              <FilterOutlined />
+                           </Button>
+                        )}
+                     </div>
+                     {currentTab}
+                  </div>
+               ) : (
+                  <div>Отчет не найден</div>
+               )}
             </div>
          ) : (
-            <div>Отчет не найден</div>
+            <div></div>
          )}
       </LayoutPage>
    );

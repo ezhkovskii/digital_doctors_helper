@@ -9,7 +9,7 @@ import React, {
 import Space from 'antd/es/space';
 import Table from 'antd/es/table';
 import { ColumnsType } from 'antd/es/table';
-import { getReferral, IReferral } from './api';
+import { deleteReferral, getReferral, IReferral } from './api';
 
 interface IContentOptions {
    loading: boolean;
@@ -17,12 +17,12 @@ interface IContentOptions {
 }
 
 const ReferralList: FC<IContentOptions> = memo((props: IContentOptions) => {
-   const [diagnosis, setDiagnosis] = useState([]);
+   const [referral, setReferral] = useState([]);
 
    useEffect(() => {
       getReferral().then((res) => {
          props.setLoading(false);
-         setDiagnosis(res);
+         setReferral(res);
       });
    }, []);
 
@@ -68,31 +68,35 @@ const ReferralList: FC<IContentOptions> = memo((props: IContentOptions) => {
             width: '15%',
             render: (_, record) => (
                <Space size="middle">
-                  <a onClick={removeItem.bind(this, record.code)}>Удалить</a>
+                  <a onClick={removeItem.bind(this, record.id)}>Удалить</a>
                </Space>
             )
          }
       ],
-      [diagnosis]
+      [referral]
    );
 
    const removeItem = useCallback(
       (id: number) => {
-         //
+         deleteReferral(id).then(() => {
+            getReferral().then((res) => {
+               setReferral(res);
+            });
+         });
       },
-      [diagnosis]
+      [referral]
    );
 
    return (
       <>
          {!props.loading && (
             <div>
-               {diagnosis.length ? (
+               {referral.length ? (
                   <div className={'tw-grow'}>
                      <Table
                         rootClassName={'tw-flex tw-flex-col tw-grow'}
                         columns={columns}
-                        dataSource={diagnosis}
+                        dataSource={referral}
                         pagination={false}
                      />
                   </div>

@@ -1,6 +1,7 @@
 import { axiosInst, showError } from 'shared/index';
 
 interface IReferral {
+   id: number;
    name: string;
    code: string;
    synonyms: string[];
@@ -18,4 +19,15 @@ const getReferral = async (): Promise<IReferral[]> => {
    return res;
 };
 
-export { getReferral, IReferral };
+const deleteReferral = async (id: number) => {
+   let res = [];
+   try {
+      const rs = await axiosInst.delete(`/medical_appointments/${id}`);
+      res = rs.data;
+   } catch (error) {
+      showError('Ошибка при удалении направления', error);
+   }
+   return res;
+};
+
+export { deleteReferral, getReferral, IReferral };
